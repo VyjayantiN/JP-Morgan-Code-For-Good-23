@@ -1,8 +1,9 @@
 # Poshaniya (Tree Mapping Web App)
 
 <div align="center">
-   <strong>JP Morgan Code for Good 2023</strong> <br>
-  - Team Ethereal Earth <br> <br>
+   <h2>JP Morgan Code for Good 2023</h2> 
+   <h3> Team Ethereal Earth </h3>
+   <br>
   <a href="https://github.com/Om-Doiphode/Poshaniya/stargazers"><img alt="GitHub issues" src="https://img.shields.io/github/stars/Om-Doiphode/Poshaniya"></a>
   <a href="https://github.com/Om-Doiphode/Poshaniya/network/members"><img alt="GitHub stars" src="https://img.shields.io/github/forks/Om-Doiphode/Poshaniya"></a>
   <a href="https://github.com/Om-Doiphode/Poshaniya/issues"><img alt="GitHub contributors" src="https://img.shields.io/github/issues/Om-Doiphode/Poshaniya"></a>
