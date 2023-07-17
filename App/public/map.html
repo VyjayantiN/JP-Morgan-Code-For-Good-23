@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        var map;
+        var markers = [];
+
+        var places = {
+            "trees": [
+                { "name": "Pavagada", "latitude": 14.0976, "longitude": 77.2797 },
+                { "name": "Lepakshi", "latitude": 13.8164, "longitude": 77.5963 },
+                { "name": "Sira", "latitude": 13.7416, "longitude": 76.9043 },
+            ],
+            "fruits": [
+                { "name": "Anantapur", "latitude": 14.6819, "longitude": 77.6006 },
+                { "name": "Shivamoga", "latitude": 13.9304, "longitude": 75.5681 },
+                { "name": "Haveri", "latitude": 14.7937, "longitude": 75.3971 },
+                { "name": "Chitradurga", "latitude": 14.2283, "longitude": 76.3985 },
+                { "name": "Tumkur", "latitude": 13.3422, "longitude": 77.1010 },
+                { "name": "Chikmagalur", "latitude": 13.3153, "longitude": 75.7754 },
+                { "name": "Kolar", "latitude": 13.1357, "longitude": 78.1296 },
+                { "name": "Koppal", "latitude": 15.3508, "longitude": 76.1540 },
+                { "name": "Raichur", "latitude": 16.2076, "longitude": 77.3463 }
+            ]
+        };
+
+        function addMarker(latitude, longitude, placeName) {
+            var markerOptions = {};
+
+            // Use a different marker icon for the trees category
+            if (places.trees.some(place => place.name === placeName)) {
+                markerOptions.icon = L.icon({
+                    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    tooltipAnchor: [16, -28],
+                    shadowSize: [41, 41]
+                });
+            } else {
+                // Use a different marker icon for the fruits category
+                markerOptions.icon = L.icon({
+                    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    tooltipAnchor: [16, -28],
+                    shadowSize: [41, 41]
+                });
+            }
+
+            var marker = L.marker([latitude, longitude], markerOptions).addTo(map);
+            marker.bindPopup(placeName);
+            markers.push(marker);
+        }
+
+        function initMap() {
+            const bangaloreLatitude = 12.9716;
+            const bangaloreLongitude = 77.5946;
+
+            map = L.map('map').setView([bangaloreLatitude, bangaloreLongitude], 8);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data © <a href="https://www.openstreetmap.org">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            for (var category in places) {
+                if (places.hasOwnProperty(category)) {
+                    var categoryPlaces = places[category];
+                    categoryPlaces.forEach(place => {
+                        addMarker(place.latitude, place.longitude, place.name);
+                    });
+                }
+            }
+
+            map.on('click', handleMapClick);
+        }
+
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
+</body>
+</html>

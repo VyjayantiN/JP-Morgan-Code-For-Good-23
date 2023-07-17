@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .card-header{
+    background-color: #99dd9c;
+  }
+  .graph {
+    flex-basis: calc(50% - 10px);
+    height: 300px;
+    max-width: 380px;
+  }
+  
+  /* Custom colors */
+  .chart-colors {
+    --color-primary: #2980B9;
+    --color-secondary: #FF9F00;
+    --color-tertiary: #4CAF50;
+    --color-quaternary: #9B59B6;
+    --color-quinary: #E74C3C;
+    --color-radar-primary: #00A352;
+    --color-1: var(--color-primary);
+    --color-2: var(--color-secondary);
+  }
+
+  
+  
+</style>
+
+
+<body>
+  <div class="container-xl px-4 mt-4">
+    <nav class="nav nav-borders">
+        <h3>Profile </h3>
+       
+      </nav>
+      
+    <hr class="mt-0 mb-4">
+    <div class="row">
+      <div class="col-xl-4">
+        <div class="card mb-4 mb-xl-0">
+          <div class="card-header" style="background-color: #dff0e0;">You</div>
+          <div class="card-body text-center">
+            <img class="img-account-profile rounded-circle mb-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGqFdQpAd5mG6DA_Xl50JfmiSssF8nXD4sYg&usqp=CAU" alt="">
+            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+            <button class="btn" style="background-color: #228b22; color:white" id="uploadBtn" type="button">Upload new image</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8">
+        <div class="card mb-4">
+          <div class="card-header" style="background-color: #dff0e0;">Your Profile</div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label class="small mb-1" for="inputUsername">Username</label>
+                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="Ayush Patil">
+              </div>
+         
+              <div class="mb-3">
+                <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="ayushpatil2128@gmail.com">
+              </div>
+              <div class="row gx-3 mb-3">
+                <div class="col-md-6">
+                  <label class="small mb-1" for="inputPhone">Phone number</label>
+                  <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="91234567890">
+                </div>
+              
+              </div>
+              <button class="btn" style="background-color: #228b22; color:white" type="button">Save changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5 pt-5">
+      <div class="col-6">
+        <div id="dashboard" class="graph"></div>
+      </div>
+      <div class="col-6">
+        <div id="upcoming-events" class="graph"></div>
+      </div>
+    </div>
+    <div class="row">
+     
+        <div class="col-6">
+            <div id="trees-tagged" class="graph"></div>
+          </div>
+          <div class="col-6">
+            <div id="competence-chart" class="graph"></div>
+          </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest/dist/apexcharts.min.js"></script>
+  <script src="graphscript.js"></script>
+  <script>
+    document.getElementById('uploadBtn').addEventListener('click', function() {
+      document.getElementById('fileInput').click();
+    });
+
+    document.getElementById('fileInput').addEventListener('change', function() {
+      // Handle file upload logic here
+      var selectedFile = this.files[0];
+      console.log('Selected file:', selectedFile);
+    });
+  </script>
+</body>
+</html>
