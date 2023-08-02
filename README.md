@@ -23,6 +23,11 @@
 - Dashboard for each user
 - Notifications will be sent through email when a user registers for an event.
 
+### Video Demonstration
+
+![Video Demonstration](JPMC%20FINAL%20VIDEO.gif)
+
+
 ## 🛠️ Project Setup
 
 #### For Web
